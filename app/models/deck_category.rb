@@ -1,0 +1,2 @@
+class DeckCategory < ApplicationRecord
+end
