@@ -5,5 +5,5 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable,
          :jwt_authenticatable, jwt_revocation_strategy: JwtDenylist
 
-  has_many :decks
+  has_many :decks, inverse_of: :user, dependent: :destroy
 end
