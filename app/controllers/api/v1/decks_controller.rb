@@ -12,7 +12,7 @@ class Api::V1::DecksController < ApplicationController
 
   def index_filters_params
     filters = {}
-    filters[:deck_category_id] = params.dig(:filter, :deck_category_id)
+    filters[:deck_category_id] = params.dig(:deck_category_id)
     filters
   end
 end
