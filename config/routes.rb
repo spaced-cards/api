@@ -16,7 +16,9 @@ Rails.application.routes.draw do
   namespace :api, defaults: { format: "json" } do
     scope module: :v1, constraints: ApiConstraints.new(version: 1, default: true) do
       resources :deck_categories, only: :index do
-        resources :decks
+        resources :decks, only: :index do
+          resources :cards
+        end
       end
     end
   end
