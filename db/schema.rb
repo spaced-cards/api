@@ -12,27 +12,27 @@
 
 ActiveRecord::Schema.define(version: 2021_04_12_054944) do
 
-  create_table "cards", force: :cascade do |t|
-    t.integer "deck_id", null: false
-    t.binary "question", limit: 1048576, null: false
+  create_table "cards", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+    t.bigint "deck_id", null: false
+    t.binary "question", size: :medium, null: false
     t.text "answer", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["deck_id"], name: "index_cards_on_deck_id"
   end
 
-  create_table "deck_categories", force: :cascade do |t|
+  create_table "deck_categories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.string "name"
     t.text "description"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "decks", force: :cascade do |t|
+  create_table "decks", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.string "name", null: false
-    t.integer "user_id", null: false
+    t.bigint "user_id", null: false
     t.text "description", null: false
-    t.integer "deck_category_id", null: false
+    t.bigint "deck_category_id", null: false
     t.integer "difficulty", limit: 1, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -41,7 +41,7 @@ ActiveRecord::Schema.define(version: 2021_04_12_054944) do
     t.index ["user_id"], name: "index_decks_on_user_id"
   end
 
-  create_table "jwt_denylists", force: :cascade do |t|
+  create_table "jwt_denylists", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.string "jti"
     t.datetime "exp"
     t.datetime "created_at", precision: 6, null: false
@@ -49,7 +49,7 @@ ActiveRecord::Schema.define(version: 2021_04_12_054944) do
     t.index ["jti"], name: "index_jwt_denylists_on_jti"
   end
 
-  create_table "users", force: :cascade do |t|
+  create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
